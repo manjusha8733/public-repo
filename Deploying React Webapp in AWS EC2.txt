@@ -1,0 +1,75 @@
+Deploying React Webapp in AWS EC2:
+
+Step-1:
+   Login to AWS Management Console
+
+Step-2:
+  Create EC2-Ubuntu  Instance using below parameters:
+   Name : Ubuntu-React
+   AMI : Ubuntu-26.04
+   Instance Type : t2.micro
+   Key Pair : Choose Existing Keypair or Create new keypair
+   Network Settings : default
+   Storage : default
+
+Step-3:
+  Connect EC2 Instance using SSH
+
+Step-4:
+  Execute the below commands:
+   
+    sudo apt update
+sudo apt install git -y
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs
+
+Step-5:
+   Check the versions of installed softwares
+
+     
+# Confirm versions
+node -v
+npm -v
+git --version
+
+
+Step-6:
+  Clone the GitHub Repo
+ 
+  git clone https://github.com/praveen3387/portfolio.git
+
+ 
+Step-7:
+  After cloning change the Directory path to your repo
+  
+   cd portfoloio
+
+
+Step-7:
+  Now Install Project Dependencies
+
+   npm install
+
+# Option A: Directly with --host flag
+npm run dev -- --host
+
+Step-8:
+   Change inbound rule in EC2 Security Group
+   
+add port no: 3000---> 0.0.0.0/0
+
+Step-9:
+  Copy public ip in EC2 Dashboard
+
+   Paste it in the browser:
+    http://<your-ec2-public-ip>:3000
+
+ex:  http://44.202.45.213:3000/
+
+Step-10:
+  It shows React web app
+
+
+
+
+
